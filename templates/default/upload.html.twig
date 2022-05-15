@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="mt-2">
+        {{ form_start(form, { 'attr': {'class': 'form-horizontal'} }) }}
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">{{ form_label(form.file) }}</label>
+            <div class="col-sm-10">
+                {{ form_widget(form.file, { 'attr': {'class': 'form-control'} }) }}
+                <small class="help-block" style="color: red">{{ form.file.vars.errors|replace({'ERROR: ' : ''}) }}</small>
+            </div>
+        </div>
+        <br><br>
+
+        {{ form_widget(form) }}
+            <button class="btn btn-success">{{ button_label|default('Upload') }}</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

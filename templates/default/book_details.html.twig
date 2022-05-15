@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}Department{% endblock %}
+
+    {% block body %}
+        <h1>{{ book.title }}</h1>
+
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Year</th>
+                <td>{{ book.year }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ book.author.name }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ book.gender.name }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a class="btn btn-info" href="{{ path('app_library_index') }}">back to list</a>
+{% endblock %}

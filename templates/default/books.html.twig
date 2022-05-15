@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    {% if (app.request.get('_route') not in ['app_library_index']) %}
+    <div>
+        <a class="btn btn-info" href="{{ path('app_library_index') }}">back to list</a><br/><br/>
+    </div>
+    {% endif %}
+    <table class="table table-striped" style="text-align: left">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Gender</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td><a href="{{ path('app_library_book', {'id': book.id}) }}">{{ book.title }}</a></td>
+                <td><a href="{{ path('app_library_author', {'name': book.author.name}) }}">{{ book.author.name }}</a></td>
+                <td><a href="{{ path('app_library_year', {'year': book.year}) }}">{{ book.year }}</a></td>
+                <td><a href="{{ path('app_library_gender', {'name': book.gender.name}) }}">{{ book.gender.name }}</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
